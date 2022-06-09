@@ -1,6 +1,8 @@
 package com.jojoldu.book.chapter1.web;
 
+import com.jojoldu.book.chapter1.web.dto.HelloResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -12,5 +14,11 @@ public class HelloController {
     // 이전에는 @RequestMapping(method = RequestMethod.GET) 으로 사용
     public String hello() {
         return "hello";
+    }
+
+    @GetMapping("/hello/dto")
+    public HelloResponseDto helloDto(@RequestParam("name") String name, // 외부 API에서 넘긴 파라미터를 가져오는 어노테이션
+                                     @RequestParam("amount") int amount) {
+        return new HelloResponseDto(name, amount);
     }
 }

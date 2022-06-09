@@ -1,8 +1,8 @@
 buildscript {
-    //전역 변수를 생성하고 값을 2.1.7.RELEASE 로 지정
     ext {
         springBootVersion = '2.1.7.RELEASE'
     }
+    //전역 변수를 생성하고 값을 2.1.7.RELEASE 로 지정
     repositories {
         mavenCentral()
     }
@@ -22,8 +22,8 @@ plugins {
     id 'org.springframework.boot' version "${springBootVersion}"
 }
 
-// Spring Boot 버전에 따라서 의존성들을 자동으로 관리
 apply plugin: 'io.spring.dependency-management'
+// Spring Boot 버전에 따라서 의존성들을 자동으로 관리
 
 group 'jojoldu.book'
 version '1.0-SNAPSHOT'
@@ -34,8 +34,13 @@ repositories {
 
 // 프로젝트 개발에 필요한 의존성을 선언
 dependencies {
-    // 버전을 명시하지 않아야 classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 에 명시한 버전을 따라가게 됨
-    // 이렇게 관리 할 경우 각 라이브러리들의 버전 관리가 한 곳에 집중되고 버전 충돌 문제도 해결됨
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // 버전을 명시하지 않아야 classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 에 명시한 버전을 따라가게 됨
+    // 이렇게 관리 할 경우 각 라이브러리들의 버전 관리가 한 곳에 집중되고 버전 충돌 문제도 해결됨
+
+    implementation 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    // lombok annotation 사용
+    // todo annotationProcessor 의 의미에 대해 다시 파악 할 것
 }
