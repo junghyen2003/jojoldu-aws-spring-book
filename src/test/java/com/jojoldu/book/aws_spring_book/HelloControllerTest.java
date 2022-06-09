@@ -1,6 +1,6 @@
-package com.jojoldu.book.chapter1;
+package com.jojoldu.book.aws_spring_book;
 
-import com.jojoldu.book.chapter1.web.HelloController;
+import com.jojoldu.book.aws_spring_book.web.HelloController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

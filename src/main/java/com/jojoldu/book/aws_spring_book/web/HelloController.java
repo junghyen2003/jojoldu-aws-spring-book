@@ -1,6 +1,6 @@
-package com.jojoldu.book.chapter1.web;
+package com.jojoldu.book.aws_spring_book.web;
 
-import com.jojoldu.book.chapter1.web.dto.HelloResponseDto;
+import com.jojoldu.book.aws_spring_book.web.dto.HelloResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.jojoldu.book.chapter1.web.dto;
+package com.jojoldu.book.aws_spring_book.web.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
