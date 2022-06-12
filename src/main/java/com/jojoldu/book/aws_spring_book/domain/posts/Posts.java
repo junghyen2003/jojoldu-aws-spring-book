@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 // 주요 어노테이션 일 수록 클래스에 가깝게 두자! ( JPA > Lombok ). 이후 새 언어 전환으로 lombok이 필요 없어진 경우 쉽게 삭제가 가능하다
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor // 기본 생성자 자동 추가. public Post() 와 같은 효과
 @Entity
 // 테이블과 링크 될 클래스임을 나타냄
 // 기본 값으로 클래스의 카멜케이스 이름을 언더스코어 네이밍으로 테이블 이름을 매칭
@@ -31,6 +31,8 @@ public class Posts {
     private String author;
 
     @Builder
+    // 해당 클래스의 빌더 패턴 클래스 생성
+    // 생성자 상단에 선언 시 생성자에 포함된 필드만 빌더에 포함
     public Posts(String title, String content, String author) {
         this.title = title;
         this.content = content;
