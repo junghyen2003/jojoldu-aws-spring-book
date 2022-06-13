@@ -1,4 +1,4 @@
-package com.jojoldu.book.aws_spring_book;
+package com.jojoldu.book.aws_spring_book.web;
 
 import com.jojoldu.book.aws_spring_book.web.HelloController;
 import org.junit.Test;
