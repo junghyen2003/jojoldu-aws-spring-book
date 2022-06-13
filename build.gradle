@@ -52,4 +52,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     // lombok annotation 사용
     // todo annotationProcessor 의 의미에 대해 다시 파악 할 것
+
+    // 머스테치 스타터 의존성 등록
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
 }
