@@ -19,7 +19,11 @@
                     <!--해당 값이 존재하지 않는 경우에 ^를 사용-->
                     <!--userName이 없다면 로그인 버튼을 노출-->
                     <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+
+                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
                     <!--스프링 시큐리티에서 기본적으로 제공하는 로그인 URL-->
+                    <!--/oauth2/authorization 까지 고정. 마지막 Path가 각 소셜 로그인 코드-->
+                    <!--application-oauth.properties에 등록한 redirect-uri 값에 매칭되어 자동으로 등록-->
                 {{/userName}}
             </div>
         </div>
