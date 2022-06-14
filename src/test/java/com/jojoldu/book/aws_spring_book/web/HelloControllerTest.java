@@ -1,10 +1,14 @@
 package com.jojoldu.book.aws_spring_book.web;
 
+import com.jojoldu.book.aws_spring_book.config.auth.SecurityConfig;
 import com.jojoldu.book.aws_spring_book.web.HelloController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -17,11 +21,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 // 테스트 진행 시 JUnit에 내장된 실행자 외에 다른 실행자를 실행
 // 본 테스트에서는 SpringRunner이라는 스프링 실행자를 사용
 // 즉, 스프링 부트 테스트와 JUnit 사이에 연결자 역할을 함
-@WebMvcTest(controllers = HelloController.class)
+@WebMvcTest(controllers = HelloController.class,
+        excludeFilters = {
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class),
+        })
 // 여러 스프링 테스트 어노테이션 중 Web(Spring MVC)에 집중 할 수 있는 어노테이션
 // 선언 할 경우 @Controller, @ControllerAdvice 등을 사용 할 수 있음
-// 단 @Service, @Component, @Repository 등은 사용 할 수 없음
+// 단 @Service, @Component, @Repository, @Configuration 등은 사용 할 수 없음
 // 본 테스트에서는 컨트롤러만 사용하기 때문에 선언
+// SecurityConfig는 읽었지만 스캔대상이 아닌 @Service(CustomOauth2UserService)를 읽을 수 없음. 따라서 스캔 대상에서 제외
 public class HelloControllerTest {
 
     @Autowired
@@ -32,6 +40,7 @@ public class HelloControllerTest {
     // 해당 클래스를 통해 HTTP GET, POST 등에 대한 API를 테스트 할 수 있음
 
     @Test
+    @WithMockUser(roles = "USER")
     public void hello가_리턴된다() throws Exception {
         //given
         String hello = "hello";
@@ -53,6 +62,7 @@ public class HelloControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "USER")
     public void helloDto가_리턴된다() throws Exception {
         //given
         String name = "hello";
