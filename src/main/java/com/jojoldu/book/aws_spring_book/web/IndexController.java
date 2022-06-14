@@ -1,5 +1,6 @@
 package com.jojoldu.book.aws_spring_book.web;
 
+import com.jojoldu.book.aws_spring_book.config.auth.LoginUser;
 import com.jojoldu.book.aws_spring_book.config.auth.dto.SessionUser;
 import com.jojoldu.book.aws_spring_book.service.posts.PostsService;
 import com.jojoldu.book.aws_spring_book.web.dto.PostsResponseDto;
@@ -20,11 +21,14 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
         // 서버 템플릿 엔진에서 사용 할 수 있는 객체를 저장
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+
+        // SessionUser user = (SessionUser) httpSession.getAttribute("user");
         // CustomOAuth2UserService에서 로그인 성공 시 HttpSession 세션에 SessionUser를 저장하도록 구성
+        // @LoginUser 로 개선하였음. 어느 컨트롤러든지 @LoginUser만 사용하면 세션 정보를 가져 올 수 있음.
+
         if (user != null) {
             // 세션에 저장된 값이 있을 때만 model에 userName으로 등록
             // 세션에 저장된 값이 없으면 model엔 아무런 값이 없는 상태. 로그인 버튼이 노출
