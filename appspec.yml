@@ -20,7 +20,7 @@ permissions:
 
 # CodeDeploy 배포 단계에서 실행 할 명령어를 지정
 # Application Start 라는 단계에서 deploy.sh를 ec2-user 권한으로 실행
-# timeout: 60d으로 스크립트 실행 60초 이상 수행되면 실패(무한정 기다릴 수 없으니 시간 제한이 필수적)
+# timeout: 60으로 스크립트 실행 60초 이상 수행되면 실패(무한정 기다릴 수 없으니 시간 제한이 필수적)
 hooks:
   ApplicationStart:
       - location: deploy.sh
