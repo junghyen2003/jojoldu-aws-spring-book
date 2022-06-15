@@ -12,10 +12,7 @@ echo ">현재 구동 중인 애플리케이션 pid 확인"
 
 # 현재 수행 중인 스프링 부트 애플리케이션의 프로세스 ID를 찾음
 # 실행 중이면 종료 하기 위함
-# 스프링 부트 애플리케이션 이름으로 된 다른 프로그램들이 있을 수 있어
-# aws-spring-book 으로 된 jar(pgrep -fl aws-spring-book | grep jar) 프로세스를 찾은 뒤
-# ID 를 찾음(awk '{print $1}')
-CURRENT_PID=$(pgrep -fl $PROJECT_NAME | grep jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl $PROJECT_NAME | awk '{print $1}')
 
 echo "현재 구동 중인 애플리케이션 pid : $CURRENT_PID"
 
