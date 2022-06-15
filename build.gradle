@@ -26,7 +26,7 @@ apply plugin: 'io.spring.dependency-management'
 // Spring Boot 버전에 따라서 의존성들을 자동으로 관리
 
 group 'jojoldu.book'
-version '1.0-SNAPSHOT'
+version '1.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
