@@ -26,7 +26,11 @@ apply plugin: 'io.spring.dependency-management'
 // Spring Boot 버전에 따라서 의존성들을 자동으로 관리
 
 group 'jojoldu.book'
-version '1.0.1-SNAPSHOT'
+version '1.0.1-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+// 자동으로 버전 값 변경
+// 실무에서는 수동으로 관리
+// build.gradle 은 Groovy 기반의 빌드 툴
+// Groovy 언어의 문법 중 new Date()를 추가
 
 repositories {
     mavenCentral()
